@@ -7,7 +7,9 @@
       <tr>
         <th>Title</th>
         <th>Url</th>
+        <th>Publication Date</th>
         <th>Description</th>
+        <th>Slug</th>
       </tr>
     </thead>
 
@@ -16,7 +18,9 @@
         <tr>
           <td>{{ $project->title }}</td>
           <td>{{ $project->url }}</td>
+          <td>{{ $project->publication_date }}</td>
           <td>{{ $project->description }}</td>
+          <td>{{ $project->slug }}</td>
         </tr>
       @endforeach
     </tbody>
