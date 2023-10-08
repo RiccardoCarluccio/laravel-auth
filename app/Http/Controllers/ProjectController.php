@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProjectController extends Controller
 {
@@ -13,7 +14,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all();
-        return view("admin.projects.index", compact("posts"));
+        return view("admin.projects.index", compact("projects"));
     }
 
     /**
@@ -33,16 +34,17 @@ class ProjectController extends Controller
             "title" => "required|max:255",
             "url" => "required",
         ]);
-        $project = Project::create($request->all());
-        return redirect()->route("admin.projects.index", $project->id);
 
         $counter =0;
         do {
             $slug = Str::slug($data["title"]) . ($counter > 0 ? "-" . $counter : "");
-            $alreadyExists = Post::where("slug", $slug)->first();
+            $alreadyExists = Project::where("slug", $slug)->first();
             $counter++;
         } while($alreadyExists);
             $data["slug"] = $slug;
+
+        $project = Project::create($data);
+        return redirect()->route("admin.projects.show", $project->slug);
     }
 
     /**
