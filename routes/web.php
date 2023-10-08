@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,11 +36,11 @@ Route::middleware(['auth', 'verified'])
 	->prefix("admin")
 	->name("admin.")
 	->group(function () {
-		Route::get("/projects/create", [PostController::class, "create"])->name("projects.create");
-		Route::get("/projects", [PostController::class, "store"])->name("projects.store");
+		Route::get("/projects/create", [ProjectController::class, "create"])->name("projects.create");
+		Route::post("/projects", [ProjectController::class, "store"])->name("projects.store");
 
-		Route::get("/projects", [PostController::class, "index"])->name("projects.index");
-		Route::get("/projects/{project}", [PostController::class, "show"])->name("projects.show");
+		Route::get("/projects", [ProjectController::class, "index"])->name("projects.index");
+		Route::get("/projects/{project}", [ProjectController::class, "show"])->name("projects.show");
 });
 
 require __DIR__ . '/auth.php';
@@ -53,7 +54,7 @@ require __DIR__ . '/auth.php';
 
 // CREATE
 //Route::get('/comics/create', [ComicController::class, "create"])->name("comics.create");
-//Route::post('/comics', [ComicController::class, "store"])->name("comics.store");
+//Route::Project('/comics', [ComicController::class, "store"])->name("comics.store");
 
 // READ
 //Route::get('/comics', [ComicController::class, "index"])->name("comics.index");

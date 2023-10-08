@@ -35,6 +35,14 @@ class ProjectController extends Controller
         ]);
         $project = Project::create($request->all());
         return redirect()->route("admin.projects.index", $project->id);
+
+        $counter =0;
+        do {
+            $slug = Str::slug($data["title"]) . ($counter > 0 ? "-" . $counter : "");
+            $alreadyExists = Post::where("slug", $slug)->first();
+            $counter++;
+        } while($alreadyExists);
+            $data["slug"] = $slug;
     }
 
     /**
