@@ -22,10 +22,24 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/admin/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/admin/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/admin/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::middleware('auth')
+    ->prefix("admin")
+    ->name("profile.")
+    ->group(function () {
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('destroy');
+});
+
+Route::middleware(['auth', 'verified'])
+	->prefix("admin")
+	->name("admin.")
+	->group(function () {
+		Route::get("/projects/create", [PostController::class, "create"])->name("projects.create");
+		Route::get("/projects", [PostController::class, "store"])->name("projects.store");
+
+		Route::get("/projects", [PostController::class, "index"])->name("projects.index");
+		Route::get("/projects/{project}", [PostController::class, "show"])->name("projects.show");
 });
 
 require __DIR__ . '/auth.php';
