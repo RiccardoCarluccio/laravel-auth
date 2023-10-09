@@ -6,6 +6,8 @@ use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
+use App\Http\Requests\ProjectUpsertRequest;
+
 class ProjectController extends Controller
 {
     /**
@@ -28,7 +30,7 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProjectUpsertRequest $request)
     {
         $data = $request->validated();
 
@@ -58,7 +60,7 @@ class ProjectController extends Controller
      */
     public function edit($slug)
     {
-        $project = Project::where("slug", $slug)->firstOfRail();
+        $project = Project::where("slug", $slug)->firstOrFail();
         return view("admin.projects.edit", compact("project"));
     }
 

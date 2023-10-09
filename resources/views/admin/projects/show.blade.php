@@ -22,6 +22,7 @@
     </tbody>
   </table>
 
+  <a href="{{ route('admin.projects.edit', $project->slug) }}">Edit project</a>
   <a href="{{ route('admin.projects.index') }}">Show all projects</a>
 
 @endsection

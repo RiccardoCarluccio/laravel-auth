@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProjectStoreRequest extends FormRequest
+class ProjectUpsertRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        $user = Auth::user();														//recupera l'utente attualmente loggato
+        $user = Auth::user();
 	    if($user->email === "test@test.test") {
 		return true;
         }
@@ -31,7 +31,7 @@ class ProjectStoreRequest extends FormRequest
         ];
     }
 
-    public function messages(): array {																//permette di creare messaggi personalizzati per la validazione
+    public function messages(): array {
         return [
             'title.required' => 'Title missing',
             'title.max' => 'Title too long',
