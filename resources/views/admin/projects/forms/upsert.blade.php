@@ -1,8 +1,6 @@
 <div class="container pt-3">
-    {{-- action="{{ $action }}"= è un segnaposto  --}}
     <form action="{{ $action }}" class="row g-3" method="POST">
         @csrf()
-        {{-- @method($method) = è un segnaposto --}}
         @method($method)
 
         <div class="col-md-6">
