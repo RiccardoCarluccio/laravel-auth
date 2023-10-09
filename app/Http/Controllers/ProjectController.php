@@ -85,7 +85,7 @@ class ProjectController extends Controller
     protected function generateSlug($title) {
         $counter =0;
         do {
-            $slug = Str::slug($data["title"]) . ($counter > 0 ? "-" . $counter : "");
+            $slug = Str::slug($title) . ($counter > 0 ? "-" . $counter : "");
             $alreadyExists = Project::where("slug", $slug)->first();
             $counter++;
         } while($alreadyExists);
