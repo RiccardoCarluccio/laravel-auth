@@ -56,17 +56,21 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Project $project)
+    public function edit($slug)
     {
-        //
+        $project = Project::where("slug", $slug)->firstOfRail();
+        return view("admin.projects.edit", compact("project"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Project $project)
+    public function update(ProjectUpsertRequest $request, $slug)
     {
-        //
+        $data = $request->validated();
+        $project = Project::where("slug", $slug)->firstOrFail();
+        $project->update($data);
+        return redirect()->route("admin.projects.show", $project->slug);
     }
 
     /**
