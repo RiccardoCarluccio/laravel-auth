@@ -21,7 +21,15 @@
           <td>{{ $project->publication_date }}</td>
           <td>{{ $project->description }}</td>
           <td>{{ $project->slug }}</td>
-        </tr>
+          <td>
+            <form action="{{route('admin.projects.destroy', $project->slug)}}" method="POST">
+              @csrf()
+              @method("DELETE")
+            
+              <button class="btn btn-danger">Elimina</button>
+            </form>
+          </td>
+        </tr>        
       @endforeach
     </tbody>
   </table>
