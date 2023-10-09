@@ -79,7 +79,9 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project = Project::where("slug", $slug)-firstOrFail();
+        $project->delete();
+        return redirect()->route("admin.projects.index");
     }
 
     protected function generateSlug($title) {
