@@ -11,7 +11,11 @@ class ProjectStoreRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        $user = Auth::user();														//recupera l'utente attualmente loggato
+	    if($user->email === "test@test.test") {
+		return true;
+        }
+        return false;
     }
 
     /**
