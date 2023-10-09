@@ -45,7 +45,7 @@ Route::middleware(['auth', 'verified'])
         Route::get("/projects/{project}/edit", [ProjectController::class, "edit"])->name("projects.edit");
         Route::patch("/projects/{project}", [ProjectController::class, "update"])->name("projects.update");
 
-        Route::delete("/projects/{projects}", [ProjectsController::class, "destroy"])->name("projects.destroy");
+        Route::delete("/projects/{projects}", [ProjectController::class, "destroy"])->name("projects.destroy");
 });
 
 require __DIR__ . '/auth.php';
