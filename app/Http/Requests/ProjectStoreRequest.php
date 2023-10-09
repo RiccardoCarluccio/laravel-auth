@@ -26,4 +26,12 @@ class ProjectStoreRequest extends FormRequest
             "url" => "required",
         ];
     }
+
+    public function messages(): array {																//permette di creare messaggi personalizzati per la validazione
+        return [
+            'title.required' => 'Title missing',
+            'title.max' => 'Title too long',
+            'url.required' => 'url missing'
+        ];
+    }
 }
