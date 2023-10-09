@@ -34,13 +34,7 @@ class ProjectController extends Controller
     {
         $data = $request->validated();
 
-        $counter =0;
-        do {
-            $slug = Str::slug($data["title"]) . ($counter > 0 ? "-" . $counter : "");
-            $alreadyExists = Project::where("slug", $slug)->first();
-            $counter++;
-        } while($alreadyExists);
-            $data["slug"] = $slug;
+        $data["slug"] = $this->generateSlug($data["title"]);
 
         $project = Project::create($data);
         return redirect()->route("admin.projects.show", $project->slug);
@@ -71,6 +65,11 @@ class ProjectController extends Controller
     {
         $data = $request->validated();
         $project = Project::where("slug", $slug)->firstOrFail();
+
+        if($data["title"] !== $project->title) {
+            $data["slug"] = $this->generateSlug($data["title"]);
+        }
+
         $project->update($data);
         return redirect()->route("admin.projects.show", $project->slug);
     }
@@ -81,5 +80,16 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         //
+    }
+
+    protected function generateSlug($title) {
+        $counter =0;
+        do {
+            $slug = Str::slug($data["title"]) . ($counter > 0 ? "-" . $counter : "");
+            $alreadyExists = Project::where("slug", $slug)->first();
+            $counter++;
+        } while($alreadyExists);
+
+        return $slug;
     }
 }
