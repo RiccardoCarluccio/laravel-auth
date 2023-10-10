@@ -26,7 +26,7 @@
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                     <div class="logo_laravel">
-                        <svg id="visual" viewBox="0 0 150 45" width="150" height="45" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><rect x="0" y="0" width="150" height="45" fill="#2B303A"></rect><g transform="translate(77.40477565925056 28.371586864641177)"><path d="M5.5 -3.7C11 -6.3 21.9 -12.7 24.3 -12.7C26.6 -12.7 20.3 -6.3 17 -1.9C13.7 2.5 13.3 5 11.9 6.6C10.5 8.2 8 8.9 5.8 8.6C3.7 8.4 1.8 7.2 0 7.2C-1.8 7.2 -3.7 8.4 -5.8 8.6C-8 8.9 -10.5 8.2 -11.2 6.6C-12 5 -11 2.5 -15.3 -2.5C-19.7 -7.5 -29.3 -15 -29.6 -18.3C-29.8 -21.6 -20.7 -20.8 -14.2 -17.5C-7.7 -14.3 -3.8 -8.6 -1.9 -5.3C0 -2 0 -1 5.5 -3.7" fill="#BB004B"></path></g></svg>
+                        <svg id="visual" viewBox="0 0 150 45" width="150" height="45" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><rect x="0" y="0" width="150" height="45" fill="#001122"></rect><g transform="translate(76.5614892831022 26.40690167133682)"><path d="M4.7 -7.1C5.7 -7.5 5.9 -5.5 9 -3.9C12 -2.3 18 -1.2 18.6 0.3C19.2 1.8 14.4 3.7 11.5 5.7C8.7 7.7 7.8 9.9 6.3 9C4.7 8.1 2.3 4 0.4 3.3C-1.5 2.6 -3 5.2 -3.9 5.7C-4.7 6.2 -5 4.6 -8.9 3.3C-12.8 2 -20.5 1 -21.6 -0.7C-22.8 -2.3 -17.5 -4.7 -15 -8.6C-12.6 -12.5 -13 -17.9 -11 -16.9C-9 -15.9 -4.5 -8.5 -1.3 -6.2C1.8 -3.8 3.7 -6.7 4.7 -7.1" fill="#BB004B"></path></g></svg>
                     </div>
                     {{-- config('app.name', 'Laravel') --}}
                 </a>

@@ -5,9 +5,6 @@
 
         <div class="col-md-6">
             <label for="inputTitle4" class="form-label">Title</label>
-            {{-- value="{{ old('title'= ottenere il valore precedentemente inviato --}}
-            {{-- , $project?->title) }} = stampare il valore di title --}}
-            {{-- , $project?->title) }} = "?" se la variabile $project non è definito assegna "null"  --}}
             <input type="title" class="form-control @error('title') is-invalid @enderror"
                 value="{{ old('title', $project?->title) }}" id="inputTitle4" name="title">
             @error('title')
