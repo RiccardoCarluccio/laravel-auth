@@ -35,6 +35,7 @@ class ProjectController extends Controller
         $data = $request->validated();
 
         $data["slug"] = $this->generateSlug($data["title"]);
+        $data["image"] = Storage::put("projects", $data["image"]);
 
         $project = Project::create($data);
         return redirect()->route("admin.projects.show", $project->slug);

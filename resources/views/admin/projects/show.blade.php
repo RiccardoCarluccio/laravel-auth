@@ -15,6 +15,7 @@
 
     <tbody>
       <tr>
+        <td><img src="{{ asset('/storage/' . $project->image) }}" alt=""></td>
         <td>{{ $project->title }}</td>
         <td>{{ $project->url }}</td>
         <td>{{ $project->description }}</td>
