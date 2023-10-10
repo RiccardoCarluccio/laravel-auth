@@ -1,5 +1,5 @@
 <div class="container pt-3">
-    <form action="{{ $action }}" class="row g-3" method="POST">
+    <form action="{{ $action }}" class="row g-3" method="POST" enctype="multipart/form-data">
         @csrf()
         @method($method)
 
@@ -13,7 +13,7 @@
         </div>
         
         <div class="col-md-6">
-            <label for="inputUrl4" class="form-label @error('url') is-invalid @enderror">url</label>
+            <label for="inputUrl4" class="form-label @error('url') is-invalid @enderror">Link URL</label>
             <input type="text" class="form-control" id="inputUrl4" name="url"
                 value="{{ old('url', $project?->url) }}">
             @error('url')
@@ -22,13 +22,23 @@
         </div>
 
         <div class="col-12">
+            <label for="inputThumb" class="form-label @error('thumb') is-invalid @enderror">Image URL</label>
+            <input type="text" class="form-control" id="inputThumb" name="thumb"
+                value="{{ old('thumb', $project?->thumb) }}">
+            @error('thumb')
+                <div class="invalid_feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="col-12">
             <label for="inputDescription" class="form-label @error('description') is-invalid @enderror">Description</label>
             <input type="text" class="form-control" id="inputDescription" name="description"
-                value="{{ old('description', $project?->description) }}">
+                value="{{ old('description', $project?->description) }}" style="height:250px">
             @error('description')
                 <div class="invalid_feedback">{{ $message }}</div>
             @enderror
         </div>
+
         <div class="col-12">
             <button type="submit" class="btn btn-primary">Conferma</button>
         </div>
