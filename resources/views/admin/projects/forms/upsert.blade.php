@@ -23,8 +23,8 @@
 
         <div class="col-12">
             <label for="inputThumb" class="form-label @error('thumb') is-invalid @enderror">Image URL</label>
-            <input type="text" class="form-control" id="inputThumb" name="thumb"
-                value="{{ old('thumb', $project?->thumb) }}">
+            <input type="file" class="form-control" id="inputThumb" name="thumb"
+                value="{{ old('thumb', $project?->thumb) }}" accept="image/*">
             @error('thumb')
                 <div class="invalid_feedback">{{ $message }}</div>
             @enderror
